@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "d55800186ff7651be356015b103047b9dd84f83172cc257042a322491df3502e"
+    },
+    "playwright-dev": {
+      "source": "microsoft/playwright",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/playwright-dev/SKILL.md",
+      "computedHash": "2e0b3c8d86f09fe0451c18ebf4b7e47fb34535b1c10c53c89ede57afdf4adb03"
+    },
+    "playwright-devops": {
+      "source": "microsoft/playwright",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/playwright-devops/SKILL.md",
+      "computedHash": "5f6899cfc05fcd27045190a7fc733eb299460a49573bbe898f74f800af8b7e77"
+    },
+    "playwright-test-results": {
+      "source": "microsoft/playwright",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/playwright-test-results/SKILL.md",
+      "computedHash": "c1b81d75d37b87c8fa3aaaff601dcf0b72128fbcce7a70a0f3d193e99e9c5daf"
+    },
+    "playwright-triage": {
+      "source": "microsoft/playwright",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/playwright-triage/SKILL.md",
+      "computedHash": "fdf69315e247a0e0baaf6bdbbf7b5042fe37bb816d563ca7d0cee6fd62d87966"
+    }
+  }
+}

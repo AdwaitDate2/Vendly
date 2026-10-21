@@ -1,0 +1,52 @@
+{
+  "name": "vendly",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.12.1",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "predev": "pnpm build:packages",
+    "dev": "next dev",
+    "build:packages": "pnpm --filter @kenmark/storage-contracts build && pnpm --filter @kenmark/storage build",
+    "prebuild": "pnpm build:packages",
+    "build": "next build",
+    "build:test": "pnpm build",
+    "build:prod": "pnpm build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test:unit": "tsx --test tests/**/*.test.ts",
+    "test": "pnpm test:unit",
+    "db:ping": "node scripts/db/ping.mjs",
+    "db:indexes": "node scripts/db/indexes.mjs",
+    "db:seed": "tsx scripts/db/seed.ts",
+    "db:migrate:metal-options": "tsx --env-file-if-exists=.env scripts/db/migrations/2026-09-28-metal-options.mjs",
+    "assets:upload": "node --env-file=.env scripts/upload-asset.mjs",
+    "admin:user": "tsx --env-file-if-exists=.env scripts/create-admin-user.mjs"
+  },
+  "dependencies": {
+    "@kenmark/storage": "workspace:*",
+    "@kenmark/storage-contracts": "workspace:*",
+    "@tiptap/pm": "^3.31.3",
+    "@tiptap/react": "^3.31.3",
+    "@tiptap/starter-kit": "^3.31.3",
+    "dotenv": "^17.4.2",
+    "kenmark-skills": "^2.3.35",
+    "liquidjs": "^10.30.0",
+    "mongodb": "^7.5.0",
+    "next": "16.3.2",
+    "postcss": "8.5.23",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "sanitize-html": "^2.17.7",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.3.2",
+    "@types/node": "^22.20.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.3",
+    "tsx": "^4.23.12"
+  }
+}

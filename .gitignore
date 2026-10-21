@@ -1,0 +1,33 @@
+node_modules/
+.next/
+out/
+dist/
+.turbo/
+.vercel/
+.agents/
+.claude/
+.impeccable/
+
+# .env
+# .env.local
+# .env.test
+# .env.prod
+# .env.*
+!.env.example
+
+# kenmark-init
+/temp/
+
+# raw campaign photography (large; converted copies live in public/images/selection-2)
+/public/Shreen - Selection 2/
+/source-assets/
+
+# one-off photo-curation scripts, not part of the app
+/scratch/
+
+*.log
+.DS_Store
+*.tsbuildinfo
+
+# client documents (kept locally, never committed)
+*.docx

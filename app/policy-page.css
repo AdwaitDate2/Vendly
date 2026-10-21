@@ -1,0 +1,36 @@
+/* Policy pages (privacy, terms, shipping & returns, repairs & care, …) */
+.policy-page__updated { font-family: var(--mono) !important; font-size: 11px !important; letter-spacing: .14em; text-transform: uppercase; color: var(--mulberry) !important; }
+.policy-page__body { display: block; max-width: 1180px; margin: 0 auto; padding: 56px 5vw 110px; }
+.policy-page__body.has-contents { display: grid; grid-template-columns: minmax(200px, 260px) minmax(0, 1fr); gap: 7vw; align-items: start; }
+.policy-page__contents { position: sticky; top: 150px; max-height: calc(100vh - 180px); overflow-y: auto; padding-right: 8px; }
+.policy-page__contents ol { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 2px; counter-reset: toc; }
+.policy-page__contents li { counter-increment: toc; }
+.policy-page__contents a { display: grid; grid-template-columns: 26px 1fr; gap: 6px; padding: 6px 0; color: color-mix(in srgb, var(--ink) 78%, transparent); font-family: var(--sans); font-size: 14px; line-height: 1.35; border-bottom: 1px solid transparent; transition: color .2s ease; }
+.policy-page__contents a::before { content: counter(toc, decimal-leading-zero); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; padding-top: 3px; color: color-mix(in srgb, var(--ink) 50%, transparent); }
+.policy-page__contents a:hover, .policy-page__contents a:focus-visible { color: var(--mulberry); }
+.policy-page__text { max-width: 720px; margin: 0 auto; }
+.policy-page__body.has-contents .policy-page__text { margin: 0; }
+
+.rich-text { color: color-mix(in srgb, var(--ink) 88%, transparent); font-family: var(--sans); font-size: 17px; line-height: 1.65; }
+.rich-text > :first-child { margin-top: 0; }
+.rich-text p { margin: 0 0 16px; }
+.rich-text h2 { margin: 56px 0 18px; padding-top: 28px; border-top: 1px solid var(--line); color: var(--ink-dark); font-family: var(--serif); font-size: clamp(30px, 3.2vw, 44px); font-weight: 400; letter-spacing: -.03em; line-height: 1.02; scroll-margin-top: 140px; }
+.rich-text > h2:first-child { border-top: 0; padding-top: 0; }
+.rich-text h3 { margin: 32px 0 10px; color: var(--ink-dark); font-family: var(--serif); font-size: 24px; font-weight: 400; letter-spacing: -.02em; line-height: 1.15; scroll-margin-top: 140px; }
+.rich-text ul, .rich-text ol { margin: 0 0 20px; padding-left: 22px; }
+.rich-text li { margin: 0 0 6px; padding-left: 4px; }
+.rich-text li > p { margin: 0; }
+.rich-text ul li::marker { color: var(--mulberry); }
+.rich-text strong { color: var(--ink-dark); font-weight: 600; }
+.rich-text a { color: var(--mulberry); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.rich-text a:hover { color: var(--mulberry-dark); }
+.rich-text blockquote { margin: 28px 0; padding: 4px 0 4px 22px; border-left: 2px solid var(--mulberry); color: var(--ink-dark); font-family: var(--serif); font-size: 24px; line-height: 1.3; letter-spacing: -.01em; }
+.rich-text blockquote p { margin: 0; }
+.rich-text hr { margin: 40px 0; border: 0; border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .policy-page__body.has-contents { display: block; }
+  .policy-page__contents { position: static; max-height: none; margin-bottom: 36px; padding: 18px 20px; border: 1px solid var(--line); background: var(--sand); }
+  .policy-page__body { padding: 40px 16px 80px; }
+  .rich-text { font-size: 16px; }
+}

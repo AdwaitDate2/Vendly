@@ -1,0 +1,45 @@
+/* Keep the document as the only vertical scroll owner for admin pages. */
+.admin-shell .admin-sidebar {
+  position: static;
+  z-index: auto;
+  height: auto;
+  min-height: calc(100dvh - 56px);
+  align-self: start;
+}
+
+.admin-shell .admin-sidebar__nav {
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.admin-shell .admin-sidebar__nav--bottom {
+  flex: 0 0 auto;
+  max-height: none;
+  overflow: visible;
+}
+
+@media (max-width: 720px) {
+  .admin-shell .admin-sidebar {
+    position: sticky;
+    top: 56px;
+    z-index: 20;
+    height: auto;
+    min-height: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+  }
+
+  .admin-shell .admin-sidebar__nav,
+  .admin-shell .admin-sidebar__nav--bottom {
+    overflow: visible;
+  }
+
+  .admin-shell .admin-sidebar__nav--bottom {
+    max-height: none;
+  }
+
+  .admin-shell .admin-nav-link {
+    min-height: 44px;
+  }
+}
