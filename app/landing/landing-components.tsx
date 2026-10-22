@@ -178,11 +178,13 @@ function StorefrontSheet() {
 export function UnfoldedEditorDemo() {
   return (
     <section className="landing-foldout" id="unfolded-editor-demo" aria-label="A sample website taking shape in Vendly">
-      <ProjectSheet />
-      <FoldTransition id="fold-project-to-sections" />
-      <SectionsSheet />
-      <FoldTransition id="fold-sections-to-editor" />
-      <EditorSheet />
+      <div className="landing-editor-flow">
+        <ProjectSheet />
+        <FoldTransition id="fold-project-to-sections" />
+        <SectionsSheet />
+        <FoldTransition id="fold-sections-to-editor" />
+        <EditorSheet />
+      </div>
       <StorefrontSheet />
     </section>
   );
