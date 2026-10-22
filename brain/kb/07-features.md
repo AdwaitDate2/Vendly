@@ -1,6 +1,6 @@
 # Vendly features
 
-Last updated: 2026-10-21
+Last updated: 2026-10-22
 Status: active
 
 Vendly is the standalone website-builder project extracted from the byShreen
@@ -16,7 +16,8 @@ tenant-isolated persistence.
   storefront previews.
 - Draft and publish controls with public pages served at `/store/{siteSlug}`.
 - Media library and account-scoped uploads through Kenmark Storage.
-- Starter storefront content and assets that account owners can replace.
+- New website projects open on a blank canvas, with no preloaded storefront
+  sections or shared header/footer groups.
 
 ## Retained editor implementation notes
 

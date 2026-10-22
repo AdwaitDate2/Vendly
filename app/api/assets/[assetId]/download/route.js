@@ -14,7 +14,7 @@ export async function GET(request, context) {
   const { assetId } = await context.params;
   const storage = createStorage();
   const asset = await storage.assets.get(assetId);
-  if (!assetBelongsToAccount(asset, session.id)) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  if (!assetBelongsToAccount(asset, session.projectId || session.id)) return NextResponse.json({ error: 'Not found' }, { status: 404 });
   if (asset.status === 'deleted') {
     return NextResponse.json({ error: 'Not found' }, { status: 404 });
   }

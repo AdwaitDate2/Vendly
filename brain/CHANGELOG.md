@@ -1,5 +1,13 @@
 # Changelog
 
+## v2026.10.22-vendly-workspace
+- Added account-scoped multi-site projects, a dashboard for choosing or
+  creating websites, and project-aware tenant and asset access. New projects
+  start with empty page content and shared theme groups; existing project data
+  remains in its current tenant.
+- Added animated landing-page components and imagery, plus a local Docker
+  MongoDB setup with persistent storage and updated setup instructions.
+
 ## v2026.10.21-lint-cleanup
 - Removed all 37 ESLint warnings by correcting hook dependencies, moving
   editor actions to hoisted function declarations, removing stale suppressions,

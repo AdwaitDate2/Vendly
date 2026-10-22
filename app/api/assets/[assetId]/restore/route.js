@@ -14,7 +14,7 @@ export async function POST(request, context) {
   const { assetId } = await context.params;
   const storage = createStorage();
   const currentAsset = await storage.assets.get(assetId);
-  if (!assetBelongsToAccount(currentAsset, session.id)) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  if (!assetBelongsToAccount(currentAsset, session.projectId || session.id)) return NextResponse.json({ error: 'Not found' }, { status: 404 });
   const asset = await storage.assets.restore(assetId);
   return NextResponse.json(sanitizeAssetForApi(asset));
 }

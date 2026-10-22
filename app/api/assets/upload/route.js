@@ -24,7 +24,7 @@ export async function POST(request) {
     let folder;
     if (typeof rawFolder === 'string' && rawFolder.trim()) {
       const cleaned = rawFolder.split(/[/\\]+/).filter(Boolean).join('/');
-      folder = accountAssetFolder(account.id, cleaned);
+      folder = accountAssetFolder(account.projectId || account.id, cleaned);
     }
     const storage = createStorage();
     const session = await storage.uploads.create({
