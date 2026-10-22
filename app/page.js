@@ -1,6 +1,11 @@
-import { redirect } from 'next/navigation';
-import { getAdminSession } from '@/lib/admin-auth';
+import './landing/landing.css';
+import { LandingFirstViewport } from './landing/landing-components';
 
-export default async function HomePage() {
-  redirect((await getAdminSession()) ? '/admin/editor/home' : '/admin/login');
+export const metadata = {
+  title: 'Vendly — Build your business website',
+  description: 'Choose a website project, shape its pages, and publish when it is ready.',
+};
+
+export default function HomePage() {
+  return <LandingFirstViewport />;
 }
