@@ -321,7 +321,7 @@ export default function ContentForm({ content, action = saveContentAction, mode:
     const query = sectionQuery.trim().toLocaleLowerCase();
     return query ? outlineItems.filter((item) => `${item.outlineLabel} ${item.summary || ''}`.toLocaleLowerCase().includes(query)) : outlineItems;
   }, [outlineItems, sectionQuery]);
-  const payload = useMemo(() => ({ title, intro, sections }), [title, intro, sections]);
+  const payload = useMemo(() => ({ title, intro, sections, ...(content.blankCanvas ? { blankCanvas: true } : {}) }), [title, intro, sections, content.blankCanvas]);
   const sharedPreviewPayload = useMemo(() => ({
     globalSections: sharedGlobal?.sections || [],
     navigationSections: sharedNavigation?.sections || [],
