@@ -12,7 +12,7 @@ function CreateProjectForm() {
   const [state, formAction, pending] = useActionState(createWebsiteProject, { message: '' });
 
   return (
-    <section className="project-dashboard__create" aria-labelledby="create-project-title">
+    <section className="project-dashboard__create" id="create-website" aria-labelledby="create-project-title">
       <div>
         <h2 id="create-project-title">Start from a blank canvas</h2>
         <p>Add your own pages and sections to build a website for your business.</p>
@@ -32,7 +32,7 @@ function CreateProjectForm() {
 export default function ProjectDashboard({ projects, activeProjectId, canCreate }) {
   return (
     <>
-      <section className="project-dashboard__list" aria-labelledby="project-list-title">
+      <section className="project-dashboard__list" id="projects" aria-labelledby="project-list-title">
         <div className="project-dashboard__section-heading">
           <h2 id="project-list-title">Projects</h2>
           <span>{projects.length} {projects.length === 1 ? 'website' : 'websites'}</span>
@@ -46,8 +46,10 @@ export default function ProjectDashboard({ projects, activeProjectId, canCreate 
                   <h3>{project.name}</h3>
                   <span>Public address · /store/{project.siteSlug}</span>
                 </div>
-                <span className="project-dashboard__created">Created {formatCreatedDate(project.createdAt)}</span>
-                {project.id === activeProjectId ? <span className="project-dashboard__current">Current project</span> : null}
+                <div className="project-dashboard__project-meta">
+                  <span>Created {formatCreatedDate(project.createdAt)}</span>
+                  {project.id === activeProjectId ? <span className="project-dashboard__current">Current project</span> : null}
+                </div>
                 <form action={openWebsiteProject}>
                   <input type="hidden" name="projectId" value={project.id} />
                   <button type="submit">Open editor</button>

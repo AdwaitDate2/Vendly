@@ -6,6 +6,9 @@ Status: active
 ## Account and editor routes
 
 - `/admin/signup` creates an account; `/admin/login` starts an account session.
+- `/dashboard` lists the account's website projects, identifies the active
+  project, and lets owners create a blank website. Its workspace sidebar links
+  to `/admin/settings` for the active website's Store Settings.
 - Protected `/admin` routes provide the workspace, theme settings, content
   tools, media library, and site editor.
 - `/admin/editor/[key]` edits pages and shared content. Resource-template editor
@@ -26,6 +29,7 @@ Status: active
 
 ## Important files
 
+- `app/dashboard/` — account project dashboard and workspace navigation.
 - `app/admin/` — workspace, account access, and admin screens.
 - `app/admin/editor/` — theme/page editor routes.
 - `app/preview/` — unpublished preview routes.

@@ -3,6 +3,7 @@ import { logoutAdmin } from '@/lib/admin-actions';
 import { getAdminSession } from '@/lib/admin-auth';
 import { listAdminProjects } from '@/lib/admin-users';
 import ProjectDashboard from './project-dashboard';
+import WorkspaceSidebar from './workspace-sidebar';
 import './dashboard.css';
 
 export default async function ProjectDashboardPage({ searchParams }) {
@@ -13,7 +14,7 @@ export default async function ProjectDashboardPage({ searchParams }) {
   const query = await searchParams;
 
   return (
-    <main className="project-dashboard">
+    <div className="project-dashboard">
       <header className="project-dashboard__header">
         <a className="project-dashboard__brand" href="/">Vendly</a>
         <div className="project-dashboard__account">
@@ -22,22 +23,26 @@ export default async function ProjectDashboardPage({ searchParams }) {
         </div>
       </header>
 
-      <div className="project-dashboard__content">
-        <section className="project-dashboard__intro">
-          <h1>Your websites</h1>
-          <p>Choose a project to continue, or create a new website for your business.</p>
-        </section>
+      <div className="project-dashboard__shell">
+        <WorkspaceSidebar projectCount={projects.length} canCreate={session.role === 'owner'} />
 
-        {query?.error === 'project' ? (
-          <p className="project-dashboard__error" role="alert">That project is not available to this account. Choose one from your project list.</p>
-        ) : null}
+        <main className="project-dashboard__content">
+          <section className="project-dashboard__intro" id="overview">
+            <h1>Your websites</h1>
+            <p>Choose a project to continue, or create a new website for your business.</p>
+          </section>
 
-        <ProjectDashboard
-          projects={projects}
-          activeProjectId={session.projectId}
-          canCreate={session.role === 'owner'}
-        />
+          {query?.error === 'project' ? (
+            <p className="project-dashboard__error" role="alert">That project is not available to this account. Choose one from your project list.</p>
+          ) : null}
+
+          <ProjectDashboard
+            projects={projects}
+            activeProjectId={session.projectId}
+            canCreate={session.role === 'owner'}
+          />
+        </main>
       </div>
-    </main>
+    </div>
   );
 }

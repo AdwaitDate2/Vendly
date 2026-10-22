@@ -1,5 +1,13 @@
 # Changelog
 
+## v2026.10.22-dashboard-workspace
+- Redesigned `/dashboard` with a responsive workspace sidebar, updated
+  typography and visual styling, and a clearer website register and creation
+  panel. The Settings navigation item opens the active website's existing
+  Store Settings page.
+- Visually checked desktop and mobile layouts and the Settings destination;
+  `git diff --check` passed. Tests were not run.
+
 ## v2026.10.22-vendly-workspace
 - Added account-scoped multi-site projects, a dashboard for choosing or
   creating websites, and project-aware tenant and asset access. New projects
