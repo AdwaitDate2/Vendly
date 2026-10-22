@@ -60,7 +60,7 @@ export default async function PreviewPage({ params }) {
   const initialCountry = validatedCountryPreference(cookieStore.get(COUNTRY_PREFERENCE_COOKIE)?.value, countryOptions, settings.address.country);
   // Always load products so a newly added "Featured products" block previews immediately.
   const [products, collections, instagram, proposals, testimonials, blogPosts] = blockData;
-  const initial = { title: content.title, intro: content.intro, sections: content.sections || [] };
+  const initial = { title: content.title, intro: content.intro, sections: content.sections || [], blankCanvas: content.blankCanvas === true };
 
   return <LivePreview kind={kind} mainClass={BLOCK_PAGES[key]?.mainClass || ''} initial={initial} products={products} collections={collections} instagram={instagram} proposals={proposals} testimonials={testimonials} blogPosts={blogPosts} countryOptions={countryOptions} initialCountry={initialCountry} />;
 }

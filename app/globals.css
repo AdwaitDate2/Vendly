@@ -49,6 +49,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; letter-spac
 .hero__actions .button--light:hover, .hero__actions .button:hover { box-shadow: 0 10px 26px -12px rgba(60,24,32,.4); }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-weight: var(--theme-font-body-weight); font-style: var(--theme-font-body-style); -webkit-font-smoothing: antialiased; }
+.site-chrome--blank-canvas { min-height: 100vh; background: #fff; }
 /* Low-specificity defaults make theme presets editable while preserving section-specific scales. */
 body p, body li { font-size: var(--typography-paragraph-size, inherit); line-height: var(--typography-paragraph-line-height, inherit); }
 h1 { font-family: var(--typography-h1-font, var(--serif)); font-size: var(--typography-h1-size, 2em); line-height: var(--typography-h1-line-height, inherit); font-weight: var(--typography-h1-font-weight, inherit); font-style: var(--typography-h1-font-style, inherit); letter-spacing: var(--typography-h1-letter-spacing, -0.03em); text-transform: var(--typography-h1-case, none); }
