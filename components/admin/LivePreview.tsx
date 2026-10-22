@@ -332,7 +332,7 @@ export default function LivePreview({ kind, mainClass, initial, products, collec
 
   const sections = content.sections || [];
   const wrapWithStorefront = (children, text = sharedSite, nav = sharedNavigation) => (
-    <SiteChrome announcement={text.announcement?.body} links={nav.main} headerSettings={nav.headerSettings} logoSettings={nav.logoSettings} menuSettings={nav.menuSettings} headerEnabled={nav.headerEnabled} logoEnabled={nav.logoEnabled} menuEnabled={nav.menuEnabled} countryOptions={countryOptions} initialCountry={initialCountry} themeSectionGroups={nav.themeSectionGroups} focalPointBySource={focalPointBySource} preview>
+    <SiteChrome announcement={text.announcement?.body} links={nav.main} headerSettings={nav.headerSettings} logoSettings={nav.logoSettings} menuSettings={nav.menuSettings} headerEnabled={nav.headerEnabled} logoEnabled={nav.logoEnabled} menuEnabled={nav.menuEnabled} countryOptions={countryOptions} initialCountry={initialCountry} themeSectionGroups={nav.themeSectionGroups} focalPointBySource={focalPointBySource} blankCanvas={content.blankCanvas === true} preview>
       {children}
       <Footer newsletter={text.newsletter || {}} footer={text.footer || {}} navigation={nav} themeSectionGroups={nav.themeSectionGroups} focalPointBySource={focalPointBySource} preview />
     </SiteChrome>

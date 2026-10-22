@@ -21,7 +21,7 @@ export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const storage = createStorage();
   const list = await storage.assets.list({
-    folder: normalizeFolder(accountAssetFolder(session.id, searchParams.get('folder'))),
+    folder: normalizeFolder(accountAssetFolder(session.projectId || session.id, searchParams.get('folder'))),
     limit: searchParams.get('limit') ? Number(searchParams.get('limit')) : undefined,
     cursor: searchParams.get('cursor') ?? undefined,
     page: searchParams.get('page') ? Number(searchParams.get('page')) : undefined,

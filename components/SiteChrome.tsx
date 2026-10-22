@@ -32,16 +32,21 @@ function HeaderGroup({ sections, announcement, links, headerSettings, logoSettin
     : renderedSections;
 }
 
-export default function SiteChrome({ children, announcement, links, headerSettings, logoSettings, menuSettings, headerEnabled, logoEnabled, menuEnabled, countryOptions = [], initialCountry = '', themeSectionGroups = null, focalPointBySource = {}, preview = false }) {
+export default function SiteChrome({ children, announcement, links, headerSettings, logoSettings, menuSettings, headerEnabled, logoEnabled, menuEnabled, countryOptions = [], initialCountry = '', themeSectionGroups = null, focalPointBySource = {}, blankCanvas = false, preview = false }) {
   const hasSharedGroups = hasThemeSectionGroups(themeSectionGroups);
-  return (
-    <CartProvider>
+  const siteContent = (
+    <>
       {hasSharedGroups
         ? <HeaderGroup sections={themeSectionGroups.header} announcement={announcement} links={links} headerSettings={headerSettings} logoSettings={logoSettings} menuSettings={menuSettings} headerEnabled={headerEnabled} logoEnabled={logoEnabled} menuEnabled={menuEnabled} countryOptions={countryOptions} initialCountry={initialCountry} focalPointBySource={focalPointBySource} preview={preview} />
         : <div className="site-header-group--original"><Header announcement={announcement} links={links} headerSettings={headerSettings} logoSettings={logoSettings} menuSettings={menuSettings} headerEnabled={headerEnabled} logoEnabled={logoEnabled} menuEnabled={menuEnabled} countryOptions={countryOptions} initialCountry={initialCountry} /></div>}
       <CartDrawer />
       {children}
-      <FloatingAppointmentCTA />
+      {blankCanvas ? null : <FloatingAppointmentCTA />}
+    </>
+  );
+  return (
+    <CartProvider>
+      {blankCanvas ? <div className="site-chrome--blank-canvas">{siteContent}</div> : siteContent}
     </CartProvider>
   );
 }

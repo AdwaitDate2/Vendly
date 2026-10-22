@@ -53,7 +53,7 @@ export async function PATCH(request, context) {
   const { visibility } = UpdateAssetSchema.parse(body);
   const storage = createStorage();
   const currentAsset = await storage.assets.get(assetId);
-  if (!assetBelongsToAccount(currentAsset, session.id)) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  if (!assetBelongsToAccount(currentAsset, session.projectId || session.id)) return NextResponse.json({ error: 'Not found' }, { status: 404 });
   const asset = await storage.assets.update(assetId, { visibility });
   // Note: public → private updates origin immediately; CDN/browser caches may retain old public copies.
   return NextResponse.json(sanitizeAssetForApi(asset));
@@ -68,7 +68,7 @@ export async function DELETE(request, context) {
   const { assetId } = await context.params;
   const storage = createStorage();
   const asset = await storage.assets.get(assetId);
-  if (!assetBelongsToAccount(asset, session.id)) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  if (!assetBelongsToAccount(asset, session.projectId || session.id)) return NextResponse.json({ error: 'Not found' }, { status: 404 });
   let usage;
   try {
     usage = await findMediaUsage(`/api/assets/${assetId}`);

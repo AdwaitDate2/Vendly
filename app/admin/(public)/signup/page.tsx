@@ -4,7 +4,7 @@ import { getAdminSession, isAccountLoginConfigured } from '@/lib/admin-auth';
 import SignupForm from './SignupForm';
 
 export default async function AdminSignupPage() {
-  if (await getAdminSession()) redirect('/admin/editor/home');
+  if (await getAdminSession()) redirect('/dashboard');
 
   return (
     <main className="admin-login-page">

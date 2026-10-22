@@ -50,7 +50,7 @@ async function comingSoonPresentation(gateSettings) {
 
 export default async function RootLayout({ children }) {
   const pathname = (await headers()).get('x-pathname') || '/';
-  if (pathname === '/' || pathname === '/admin' || pathname.startsWith('/admin/')) {
+  if (pathname === '/' || pathname === '/dashboard' || pathname.startsWith('/dashboard/') || pathname === '/admin' || pathname.startsWith('/admin/')) {
     return (
       <html lang="en" data-scroll-behavior="smooth">
         <body>{children}</body>
