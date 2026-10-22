@@ -1,18 +1,20 @@
 # Vendly project overview
 
-Last updated: 2026-10-21
+Last updated: 2026-10-22
 Status: active
 
 ## Confirmed facts
 
 - Vendly is a standalone Next.js App Router website builder.
-- Visitors can create an account, sign in, and manage a private website workspace.
-- Account content is stored in a tenant-specific MongoDB database. A shared
-  database stores account records and the public site-slug directory.
+- Visitors can create an account, sign in, and manage multiple private website
+  projects from a project dashboard.
+- Each project has an isolated tenant-specific MongoDB database. A shared
+  database stores account and project records and the public site-slug directory.
 - The editor supports theme and page content, reusable sections, responsive
-  previews, draft and publish controls, and public storefront routes.
-- The starter storefront includes sample content and media that account owners
-  can replace.
+  previews, draft and publish controls, and public storefront routes for each
+  project.
+- Newly created projects start with an empty canvas. Legacy storefront fallback
+  content remains available to existing projects.
 
 ## Important files
 

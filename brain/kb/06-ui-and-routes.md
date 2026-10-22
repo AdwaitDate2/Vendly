@@ -1,6 +1,6 @@
 # UI and routes
 
-Last updated: 2026-10-21
+Last updated: 2026-10-22
 Status: active
 
 ## Account and editor routes
@@ -20,8 +20,9 @@ Status: active
 - The editor and public renderer share structured content and theme settings.
 - Account workspaces require a signed session; public storefront routes resolve
   a published site using its registered slug.
-- The starter content includes byShreen jewelry examples. Account owners can
-  replace this sample content with their own site content.
+- Newly created projects open with empty page content and empty shared header
+  and footer groups. Legacy project fallback content remains available to
+  existing projects.
 
 ## Important files
 

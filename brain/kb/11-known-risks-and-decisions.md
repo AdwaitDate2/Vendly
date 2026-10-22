@@ -1,6 +1,6 @@
 # Known risks and decisions
 
-Last updated: 2026-10-21
+Last updated: 2026-10-22
 Status: active
 
 ## Confirmed decisions
@@ -8,8 +8,8 @@ Status: active
 - Vendly uses Next.js App Router, MongoDB, signed account sessions, and separate
   tenant databases for site data.
 - Passwords use scrypt hashes; uploaded file bytes remain in Kenmark Storage.
-- The starter storefront contains byShreen sample copy and assets. Owners should
-  replace that content before presenting their own public website.
+- Newly created projects start blank. Legacy fallback content and assets remain
+  in the codebase to support existing projects and editor fallbacks.
 
 ## Open work and risks
 

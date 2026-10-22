@@ -4,7 +4,7 @@ import { getAdminSession, isAccountLoginConfigured, isDeveloperTokenConfigured }
 import LoginForm from './LoginForm';
 
 export default async function AdminLoginPage() {
-  if (await getAdminSession()) redirect('/admin/editor/home');
+  if (await getAdminSession()) redirect('/dashboard');
   const accountLogin = isAccountLoginConfigured();
   const developerToken = isDeveloperTokenConfigured();
 
