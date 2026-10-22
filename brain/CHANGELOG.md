@@ -1,5 +1,14 @@
 # Changelog
 
+## v2026.10.22-settings-cleanup
+- Simplified Store Settings into four collapsible groups for store details,
+  checkout, notifications, and product-page text while keeping all existing
+  settings and save actions. Empty recent-email history is no longer shown.
+- Fixed nested product-copy action forms that caused a settings-page hydration
+  warning.
+- Checked desktop, intermediate, and mobile layouts plus keyboard access to
+  sections. `git diff --check` passed; tests were not run.
+
 ## v2026.10.22-dashboard-workspace
 - Redesigned `/dashboard` with a responsive workspace sidebar, updated
   typography and visual styling, and a clearer website register and creation

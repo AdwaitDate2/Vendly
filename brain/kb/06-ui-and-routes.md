@@ -11,6 +11,9 @@ Status: active
   to `/admin/settings` for the active website's Store Settings.
 - Protected `/admin` routes provide the workspace, theme settings, content
   tools, media library, and site editor.
+- `/admin/settings` groups store details, checkout, notifications, and shared
+  product-page copy into collapsible sections. Recent email history appears
+  only when there are messages to review.
 - `/admin/editor/[key]` edits pages and shared content. Resource-template editor
   routes live under `/admin/editor/templates/`.
 - `/preview/[key]` renders an editor preview without publishing changes.
@@ -30,6 +33,8 @@ Status: active
 ## Important files
 
 - `app/dashboard/` — account project dashboard and workspace navigation.
+- `app/admin/(protected)/settings/` — grouped store settings page.
+- `components/admin/SettingsForms.tsx` — settings forms and save actions.
 - `app/admin/` — workspace, account access, and admin screens.
 - `app/admin/editor/` — theme/page editor routes.
 - `app/preview/` — unpublished preview routes.

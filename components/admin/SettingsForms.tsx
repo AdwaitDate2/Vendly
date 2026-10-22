@@ -26,7 +26,7 @@ export function ShippingRatesForm({ settings }) {
   const change = (index, key, value) => setRates((current) => current.map((rate, i) => (i === index ? { ...rate, [key]: value } : rate)));
   return (
     <form action={action} className="admin-card">
-      <div className="admin-card__heading"><div><h2>Shipping rates</h2><p className="admin-field-help">The options shoppers choose from at checkout. Set the price to 0 for complimentary shipping.</p></div></div>
+      <div className="admin-card__heading"><div><h3>Shipping rates</h3><p className="admin-field-help">Checkout options. Set the price to 0 for free shipping.</p></div></div>
       <input type="hidden" name="rates" value={JSON.stringify(rates)} />
       <div className="admin-rate-list">
         {rates.map((rate, index) => (
@@ -61,7 +61,7 @@ export function TaxRatesForm({ settings }) {
   const change = (index, key, value) => setRates((current) => current.map((rate, i) => (i === index ? { ...rate, [key]: value } : rate)));
   return (
     <form action={action} className="admin-card">
-      <div className="admin-card__heading"><div><h2>Sales tax</h2><p className="admin-field-help">Charged on orders shipped to these places. Ask your accountant which states you need to collect in.</p></div></div>
+      <div className="admin-card__heading"><div><h3>Sales tax</h3><p className="admin-field-help">Choose where checkout collects sales tax.</p></div></div>
       <input type="hidden" name="rates" value={JSON.stringify(rates)} />
       <label className="admin-check"><input type="checkbox" name="enabled" value="yes" defaultChecked={settings.tax.enabled} /><span>Charge sales tax at checkout</span></label>
       <label className="admin-check"><input type="checkbox" name="shippingTaxable" value="yes" defaultChecked={settings.tax.shippingTaxable} /><span>Also charge tax on shipping</span></label>
@@ -99,7 +99,6 @@ export function StoreDetailsForm({ settings }) {
   const address = settings.address || {};
   return (
     <form action={action} className="admin-card">
-      <div className="admin-card__heading"><div><h2>Store details</h2><p className="admin-field-help">Shown on order emails and receipts.</p></div></div>
       <div className="admin-field-row">
         <label className="admin-field"><span>Store name</span><input name="storeName" defaultValue={settings.storeName} required /></label>
         <label className="admin-field"><span>Contact email</span><input name="contactEmail" type="email" defaultValue={settings.contactEmail} required /></label>
@@ -124,7 +123,6 @@ export function NotificationSettingsForm({ settings, provider, outbox }) {
   const notifications = settings.notifications;
   return (
     <form action={action} className="admin-card">
-      <div className="admin-card__heading"><div><h2>Notifications</h2><p className="admin-field-help">Who gets emailed about new requests and orders.</p></div></div>
       {provider ? (
         <div className="admin-alert"><span>Emails are sent with {provider}.</span></div>
       ) : (
@@ -138,9 +136,9 @@ export function NotificationSettingsForm({ settings, provider, outbox }) {
       <Status state={state} />
       <div className="admin-import__actions"><button type="submit" className="admin-button" disabled={pending}>{pending ? 'Saving…' : 'Save notifications'}</button></div>
 
-      <details className="admin-seo" open={!provider}>
-        <summary>Recent emails ({outbox.length})</summary>
-        {outbox.length ? (
+      {outbox.length ? (
+        <details className="admin-seo">
+          <summary>Recent emails ({outbox.length})</summary>
           <ul className="admin-outbox">
             {outbox.map((email) => (
               <li key={email.id}>
@@ -150,21 +148,21 @@ export function NotificationSettingsForm({ settings, provider, outbox }) {
               </li>
             ))}
           </ul>
-        ) : <p className="admin-field-help">No emails yet.</p>}
-      </details>
+        </details>
+      ) : null}
     </form>
   );
 }
 
-function ResetTextButton({ action, label }) {
+function ApplyTextButton({ action, label }) {
   const [state, formAction, pending] = useActionState(action, {});
   return (
-    <form action={formAction} style={{ display: 'inline' }}>
-      <button type="submit" className="admin-button admin-button--ghost" disabled={pending} style={{ fontSize: 13 }}>
+    <>
+      <button type="submit" formAction={formAction} className="admin-button admin-button--ghost admin-product-info__apply-button" disabled={pending}>
         {pending ? 'Applying…' : label}
       </button>
-      {state?.message ? <span className={`admin-field-help${state.ok ? '' : ' is-error'}`} style={{ marginLeft: 10 }}>{state.message}</span> : null}
-    </form>
+      {state?.message ? <span className={`admin-field-help${state.ok ? '' : ' is-error'}`} role="status">{state.message}</span> : null}
+    </>
   );
 }
 
@@ -173,15 +171,14 @@ export function ProductInfoForm({ settings }) {
   const info = settings.productInfo;
   return (
     <form action={action} className="admin-card">
-      <div className="admin-card__heading"><div><h2>Product page text</h2><p className="admin-field-help">Shared wording for the Product details, Care instructions and Shipping &amp; returns sections on every product page. A single product can override it on its own edit page.</p></div></div>
       <label className="admin-field"><span>Diamond quality note</span><input name="diamondNote" defaultValue={info.diamondNote} placeholder="(E/F color, VVS/VS clarity)" /><span className="admin-field-help">Shown after the diamond weight under Product details.</span></label>
       <h3>Care instructions</h3>
       <label className="admin-field"><span>Introduction</span><input name="careIntro" defaultValue={info.careIntro} /></label>
       <label className="admin-field"><span>Care tips (one per line)</span><textarea name="careBullets" rows="6" defaultValue={info.careBullets} /></label>
       <label className="admin-field"><span>Closing line</span><input name="careSignoff" defaultValue={info.careSignoff} /></label>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 4 }}>
-        <span className="admin-field-help" style={{ margin: 0 }}>Apply the current care text to every product:</span>
-        <ResetTextButton action={resetProductCareTextAction} label="Apply care text to all products" />
+      <div className="admin-product-info__apply-row">
+        <span className="admin-field-help">Apply the current care text to every product:</span>
+        <ApplyTextButton action={resetProductCareTextAction} label="Apply care text to all products" />
       </div>
       <h3>Shipping &amp; returns</h3>
       <div className="admin-field-row">
@@ -190,9 +187,9 @@ export function ProductInfoForm({ settings }) {
       </div>
       <label className="admin-field"><span>Text</span><textarea name="shippingBody" rows="9" defaultValue={info.shippingBody} /><span className="admin-field-help">Separate paragraphs with a blank line. Use **double stars** for bold, and {'{email}'} for a link to your contact email.</span></label>
       <label className="admin-field"><span>Small print</span><input name="shippingNote" defaultValue={info.shippingNote} /></label>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <span className="admin-field-help" style={{ margin: 0 }}>Apply the current shipping text to every product:</span>
-        <ResetTextButton action={resetProductShippingTextAction} label="Apply shipping text to all products" />
+      <div className="admin-product-info__apply-row">
+        <span className="admin-field-help">Apply the current shipping text to every product:</span>
+        <ApplyTextButton action={resetProductShippingTextAction} label="Apply shipping text to all products" />
       </div>
       <Status state={state} />
       <div className="admin-import__actions"><button type="submit" className="admin-button" disabled={pending}>{pending ? 'Saving…' : 'Save product page text'}</button></div>

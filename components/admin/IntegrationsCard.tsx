@@ -6,10 +6,10 @@ export default function IntegrationsCard({ stripe, klaviyo }) {
   ];
   return (
     <section className="admin-card admin-integrations">
-      <div className="admin-card__heading"><div><h2>Integrations</h2></div></div>
+      <div className="admin-card__heading"><div><h3>Integrations</h3></div></div>
       {rows.map(([name, purpose, connected]) => (
         <div key={name} className="admin-integration__head admin-integration__row">
-          <h3>{name} <small>— {purpose}</small></h3>
+          <h4>{name} <small>— {purpose}</small></h4>
           <span className={`admin-status admin-status--${connected ? 'published' : 'draft'}`}>{connected ? 'Connected' : 'Not connected'}</span>
         </div>
       ))}
